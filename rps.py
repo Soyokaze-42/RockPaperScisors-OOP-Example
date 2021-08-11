@@ -1,6 +1,6 @@
 from getpass import getpass # use this to hide the play from other players
 
-class RPSPlayer():
+class RockPaperScisorsPlayer():
     # A player used in RockPaperScisors
     def __init__(self, name: str):
         self.name = name
@@ -13,7 +13,7 @@ class RPSPlayer():
 class RockPaperScisors():
     # Class to play a game of Rock/Paper/Scisors
     def __init__(self, players_by_name):
-        self.players = [RPSPlayer(name) for name in players_by_name]
+        self.players = [RockPaperScisorsPlayer(name) for name in players_by_name]
 
     def play(self): # players make a move
 
@@ -30,18 +30,14 @@ class RockPaperScisors():
         # evaluate all the positions to see if a player won and print the winner or tie.
         for index, player in enumerate(self.players):
             other_plays = [other_player.position for other_index, other_player in enumerate(self.players) if other_index != index]
-            if player.position == "R" and "R" not in other_plays and "P" not in other_plays:
-                print(f"{player.name} won")
-                return True
-            elif player.position == "P" and "S" not in other_plays and "P" not in other_plays:
-                print(f"{player.name} won")
-                return True
-            elif player.position == "S" and "R" not in other_plays and "S" not in other_plays:
+            if player.position == "R" and "R" not in other_plays and "P" not in other_plays
+                    or player.position == "P" and "S" not in other_plays and "P" not in other_plays
+                    or player.position == "S" and "R" not in other_plays and "S" not in other_plays:
                 print(f"{player.name} won")
                 return True
         print("It is a tie, try again")
         return False
 
 if __name__ == "__main__":
-    RPS_game = RockPaperScisors(["Bob", "Alice", "Charlie"])
-    RPS_game.play()
+    rock_paper_scisors_game = RockPaperScisors(["Bob", "Alice", "Charlie"])
+    rock_paper_scisors_game.play()
